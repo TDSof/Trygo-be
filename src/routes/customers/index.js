@@ -1,9 +1,14 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const taskController = require('../../controllers/customerController');
+const customerController = require('../../controllers/customerController');
 
 router.route('/')
-    .get(taskController.listTasks);
+	.get(customerController.listCustomers)
+	.post(customerController.createCustomer);
+
+router.route('/:customer')
+	.get(customerController.readCustomer)
+	.put(customerController.updateCustomer);
 
 module.exports = router;
